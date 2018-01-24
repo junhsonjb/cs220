@@ -1,0 +1,91 @@
+Please edit this file with a text editor, and turn in your edited file on
+myCourses under "Content" in the "Homework Submissions" folder.
+
+Name:
+
+1. Write the word "True" at the start of the blank line after the following
+   statements if they are true, or "False" if they are incorrect.
+
+	A. The "make" command allows us to ensure all pre-requisite steps have
+	been completed, that we use the same build commands with the same
+	options every time we build, and allows us to encode a complicated
+	recipe for building or testing code as a simple target.
+  True
+
+
+	B. One of the most powerful concepts of the C programming language is
+	the ability to treat a complex function as a simple abstract mechanism
+	which reads arguments, and returns a value.
+  True
+
+
+	C. The code snippet "int x=10; while(x>0); x--;" compiles with no errors
+	and runs to completion when executed.
+  False
+
+
+	D. It is valid to use "if_for" as a variable name in C, even though
+	anyone who reads the code will probably be confused.
+  True
+
+
+	E. Upside down code can be avoided by putting function declarations at
+	the top of a C file. However doing so requires specification of the
+	return type, function name, and argument list twice.
+
+
+2. Write a C function that takes two integer arguments which represent the width
+   and height of a rectangle. Your function should calculate and return the area
+   of the rectangle.
+
+   int area(int width, int height) {
+    return width * height;
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+  3. Compile the following C code:
+
+  	#include <stdio.h>
+	#include <stdlib.h>
+
+	int main(int argc, char **argv) {
+
+		int x; int y; int s_sum;
+		unsigned int v; unsigned int w; unsigned int u_sum;
+
+		if (argc<3) {
+			printf("Please invoke as %s num1 num2\n",argv[0]);
+			return 1;
+		}
+
+		x=atoi(argv[1]);
+		y=atoi(argv[2]);
+		v=x;
+		w=y;
+		s_sum=x+y;
+		u_sum=v+w;
+		printf("Signed: %d + %d = %d\n",x,y,s_sum);
+		printf("Unsigned: %u + %u = %u\n",v,w,u_sum);
+		if (s_sum==u_sum) { printf("The result matches\n"); }
+		else { printf("The result is different\n"); }
+		return 0;
+	}
+
+   Then invoke the resulting program, specifying two numbers as command line
+   arguments.
+
+   Can you run this program with any arguments that ends up printing "The
+   results are different"?
+
+
+   Can you figure out why?
