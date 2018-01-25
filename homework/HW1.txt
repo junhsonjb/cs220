@@ -10,23 +10,23 @@ Name:
 	been completed, that we use the same build commands with the same
 	options every time we build, and allows us to encode a complicated
 	recipe for building or testing code as a simple target.
-  True
+    True
 
 
 	B. One of the most powerful concepts of the C programming language is
 	the ability to treat a complex function as a simple abstract mechanism
 	which reads arguments, and returns a value.
-  True
+    True
 
 
 	C. The code snippet "int x=10; while(x>0); x--;" compiles with no errors
 	and runs to completion when executed.
-  False
+    False
 
 
 	D. It is valid to use "if_for" as a variable name in C, even though
 	anyone who reads the code will probably be confused.
-  True
+    True
 
 
 	E. Upside down code can be avoided by putting function declarations at
@@ -39,7 +39,8 @@ Name:
    of the rectangle.
 
    int area(int width, int height) {
-    return width * height;
+    int ret  = width * height; //calculate area and store in variable
+    return ret; //return the area variable
    }
 
 
