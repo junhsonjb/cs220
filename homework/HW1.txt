@@ -1,7 +1,7 @@
 Please edit this file with a text editor, and turn in your edited file on
 myCourses under "Content" in the "Homework Submissions" folder.
 
-Name:
+Name: Junhson Jean-Baptiste
 
 1. Write the word "True" at the start of the blank line after the following
    statements if they are true, or "False" if they are incorrect.
@@ -32,6 +32,7 @@ Name:
 	E. Upside down code can be avoided by putting function declarations at
 	the top of a C file. However doing so requires specification of the
 	return type, function name, and argument list twice.
+    True
 
 
 2. Write a C function that takes two integer arguments which represent the width
@@ -39,7 +40,7 @@ Name:
    of the rectangle.
 
    int area(int width, int height) {
-    int ret  = width * height; //calculate area and store in variable
+    int ret  = width * height; //calculate area and store in variable, ret
     return ret; //return the area variable
    }
 
@@ -88,5 +89,14 @@ Name:
    Can you run this program with any arguments that ends up printing "The
    results are different"?
 
+   No, I tried with huge numbers
+   (such as 9999999999999999999999999999999999999999999999999999999999
+   and 9999999999999999999999999999999999999999999999999999999999999999999999999)
+
 
    Can you figure out why?
+
+   Even though v, w, and u_sum are declared as unsigned ints,
+   the value stored into them are signed ints, so when
+   the mathematical operations are performed on them,
+   they have the same results as signed ints.
