@@ -20,16 +20,17 @@ int main(int argc, char** argv) {
 	printf("%d\n", min);
 
 	int num = value;
-	int factor = minFact(num);
+	//int factor = minFact(num);
 	printf("%d = ", value);
 
 	while ((num / minFact(num)) != 1) {
+		int factor = minFact(num);
 		num = num / minFact(num);
-		printf("%d x ", minFact(num));
+		printf("%d x ", factor);
 	}
 
-	printf("%d ", factor);
-
+	//printf("%d ", factor);
+	printf("%d ", minFact(num));
 
 	return 0;
 }
