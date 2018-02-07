@@ -1,0 +1,12 @@
+break main
+info variables
+info functions
+break killPlayer
+run
+commands
+where
+up
+list
+run start
+end
+set wumpusCol=playerCol-1 if wumpusCol==playerCol

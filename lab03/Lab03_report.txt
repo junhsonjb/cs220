@@ -1,0 +1,34 @@
+CS-220 Spring 2018	Lab-03			Due Feb 06, 2018
+
+1. The acronym "GDB" normally stands for "Gnu DeBugger", but according to the
+   hunt the Wumpus Emperor, what does the acronym "GDB" stand for?
+   	Grandiose Destroyer of Bulldroppings!
+   
+2. During this lab, what was the most useful gdb sub-command you discovered?
+	I found the 'where' sub-command to be very helpful. I appreciate how it showed me the
+	stack of methods that called each other to get the program into a certain state. I 	
+	also found the set and print commands to be very helpful. In the dbg.txt file, I set
+	wumpusCol to be playerCol - 1 whenever it was equal to playerCol, which helped me to 
+	never get caught by the wumpus!
+
+
+3. Is it possible to use gdb to prevent the message "You're dead." from getting
+   printed, but instead of printing the message, cause the program to get
+   restarted from the beginning automatically?  If so, what gdb sub-commands 
+   did you use to make this happen?
+	Yes, this is possible. To do this, I would use a command-list, and before 'end'-ing 	it, I would put the sub-command 'run start' to make the debugger start running from 	the beginning of the program.
+   
+   
+4. The wumpus moves around the maze randomly, and kills a player if it ends up
+   in the same room as the player. Is there any way in gdb to move the wumpus
+   to a different room before he has a chance to kill you? If so, what gdb
+   sub-commands would you use to move the wumpus?
+	You can use the gdb set variable sub-command to change the wumpusRow and wumpusCol
+	variables.
+   
+   
+5. Do you have any suggestions to make the wumpus game more fun or more
+   interesting?
+	The lab is more frustrating than it is interesting. Maybe if it were just certain values
+	stored into variables that we needed to use the debugger to retrieve instead of a whole
+	game, that could be more beneficial. 
