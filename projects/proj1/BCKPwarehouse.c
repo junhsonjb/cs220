@@ -3,9 +3,6 @@
 #include <stdio.h>
 
 void addSlot(int * used, int addition);
-int greatestdiff(int bin);
-int slotToUse(int bin);
-int inThere(int bin);
 
 int main(int argc, char **argv) {
 	if (argc<2) {
@@ -34,13 +31,6 @@ int main(int argc, char **argv) {
 		
 		/* My Code (Implementation) */
 
-		/* Before we start, let's find out the greatest difference */
-		int greatest = greatestdiff(bin);
-
-		/* If the bin we need IS NOT ACTUALLY IN ONE OF THE SLOTS */
-	if (inThere(bin) != 1) {
-
-		/* ==== For every slot ==== */
 		for (int i = 0; i < NUMSLOTS; i++) {
 
 			/* ==== If slot i is empty, definitely use it ==== */
@@ -48,24 +38,14 @@ int main(int argc, char **argv) {
 				fetchBin(bin, i);
 				break;
 			} else /* If binInSlot(i) != -1 */ {
-				/* if the slot isn't empty check if it already has the needed bin */
-				if (binInSlot(i) == bin) {
-					/* the bin we need is already here, so we can break here */
+				int currentdiff = greatestdiff(bin);
+				if ( (bin - binInSlot(i)) >= currentdiff) {
+					fetchBin(bin, i);
 					break;
-				} else /* if the bin we need isn't here, check the greatest diff */{
-					int currentdiff = bin - binInSlot(i);
-					if (currentdiff < 0) currentdiff *= -1; //make sure diff is (+)
-					/* If the current diff is the biggest, fetch into that slot */
-					if ( currentdiff  >= greatest ) {
-						fetchBin(bin, /*slotToUse(bin)*/ i);
-						break;
-					}
 				}
 			}
 
 		}
-
-	} /* If the bin we need is already in there, do nothing! */
 
 		//int slotToUse = -1;
 		//for (int i = 0; i < NUMSLOTS; i++) {
@@ -162,37 +142,6 @@ int greatestdiff(int bin) {
 		int diff = bin - binInSlot(i);
 		if (diff > result) result = diff;
 	}
-
-	/* make sure result is positive */
-	if (result < 0) result *= -1;
-
-	return result;
-
-}
-
-int slotToUse(int bin) {
-	int result = 0;
-	int slot = 0;
-	for (int i = 0; i < NUMSLOTS; i++) {
-		int diff = bin - binInSlot(i);
-		if (diff > result) {
-			result = diff;
-			slot = i;
-		}
-	}
-
-	return slot;
-
-}
-
-int inThere(int bin) {
-	int result = -1;
-	for (int i = 0; i < NUMSLOTS; i++) {
-		/* If the specified bin is already in one of the slots */
-		if (binInSlot(i) == bin) {
-			result = 1;
-		}
-	}	
 
 	return result;
 

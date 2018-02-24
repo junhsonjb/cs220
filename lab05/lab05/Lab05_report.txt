@@ -1,0 +1,35 @@
+CS-220 Spring 2018	Lab-05			Due Feb 20, 2018
+
+1. Is arr2d in row major order? How can you show in C code whether
+   arr2d is in row major order or not?
+>>Yes, arr2d is in row major order. In the C code, you can use the printFormat
+method to see how the values are stored in memory. You can also use the provided
+loop and try to print out the values of each element in arr2d.
+   
+2. Can the values of arrPtrs1d be treated abstractly as if it was
+   a normal two dimensional array? Can you use square bracket 
+   notation to read or write arrPtrs1d? How can you show in C
+   code whether arrPtrs1d can be treated as a 2D array of floats?
+>>Yes, but it would be helpful to know that each element of arrPtrs1d is 
+a vector that was previously stored in memory. This means that those 'element-arrays' could be anywhere in memory. However, treating it as a 2D array should still work
+   
+3. Is arrPtrs1d in row major order?  How can you show in C code whether
+   arrPtrs1d is in row major order or not?
+>>Yes, arrPtrs1d is in row major order. You can show this in C using the provided
+printFormat method or by trying to print arrPtrs1d's values in the provided for
+loop, just like with arr2d.
+   
+4. Can the values of arrPtrsPtrs1d be treated abstractly as if it  
+   was a two dimensional array of pointers to floating point numbers?
+   Can you use square bracket notation to read those pointers? How
+   can you show in C code that arrPtrsPtrs1d can be treated as a 
+   2D array of pointers?
+>>Yes, but it's good to know that each of it's elements are pointers to previously declared and stored vectors. This means that each vector pointer could be anywhere in memory, but treating it as a 2D array of pointers should still work.
+   
+5. From an abstract point of view, is there a difference between arr2d
+   and arrPtrs1d? From a concrete point of view (i.e. how the array is
+   laid out in memory), is there a difference between arr2d and
+   arrPtrs1d? When might the abstraction "leak"?
+>>From an abstract point of view, they are the same. But in actual memory, arr2d
+is stored contiguously as an array. In arrPtrs1d this isn't the case because each
+element points to another array that was previously stored in memory.
