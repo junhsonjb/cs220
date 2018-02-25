@@ -47,6 +47,14 @@ int main(int argc, char **argv) {
 
 		}
 
+		/* This is all the code I previously tried.
+		 * I didn't want to just get rid of it, so 
+		 * just commented it all out. Most of the
+		 * relevant code is actually just above here,
+		 * but below there is some good stuff like the
+		 * end of the do while loop that this code is in
+		 * and some function declarations */
+
 		//int slotToUse = -1;
 		//for (int i = 0; i < NUMSLOTS; i++) {
 		//	if ( bin != binInSlot(i) ) {
@@ -68,7 +76,7 @@ int main(int argc, char **argv) {
 		//				break;
 		//			}
 		//		}
-
+//
 		//		if (slotToUse != -1) {
 		//			fetchBin(bin, slotToUse);
 		//		}		

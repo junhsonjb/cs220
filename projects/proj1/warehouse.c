@@ -149,6 +149,8 @@ int main(int argc, char **argv) {
 	return 0;
 }
 
+/* Add a slot onto the list of most recently used slots
+ * (NOT USED ANYMORE) */
 void addSlot(int * used, int addition) {
 	for (int i = 0; i < 4; i++) {
 		*(used + i) = *(used + i + 1);
@@ -156,6 +158,8 @@ void addSlot(int * used, int addition) {
 	*(used + 5) = addition;
 }
 
+/* Find the greatest difference between bin numbers
+ * (between the needed bin and the ones on the bench  */
 int greatestdiff(int bin) {
 	int result = 0;
 	for (int i = 0; i < NUMSLOTS; i++) {
@@ -170,6 +174,8 @@ int greatestdiff(int bin) {
 
 }
 
+/* Find out which slot is the one to fetch into */
+/* I don't think I ended up needing this one */
 int slotToUse(int bin) {
 	int result = 0;
 	int slot = 0;
@@ -185,6 +191,7 @@ int slotToUse(int bin) {
 
 }
 
+/* Check if the bin number is already on the bench  */
 int inThere(int bin) {
 	int result = -1;
 	for (int i = 0; i < NUMSLOTS; i++) {
