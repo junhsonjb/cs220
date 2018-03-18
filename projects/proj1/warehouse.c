@@ -17,10 +17,33 @@ int main(int argc, char **argv) {
 	}
 
 	//int used[5] = {0, 0, 0, 0, 0};
+	/* how often each bin number has been called */
+	//int allBins[100];
+	/* must first initialize each element to 0 */
+	//for (int i = 0; i < 100; i++) {
+	//	allBins[i] = 0;
+	//}
 
 	do {
 		int pn = nextPartNumber();
 		int bin = pn / 10;
+
+		//allBins[bin] += 1;
+
+		/* Just trying this */
+		/* IT DID NOT WORK! */
+		//for (int j = 0; j < NUMSLOTS; j++) {
+		//	int lowest = 0;
+		//	for (int i = 0; i < NUMSLOTS; i++) {
+		//		
+		//		if (allBins[lowest] < allBins[i]) {
+		//			lowest = i;
+		//		}
+
+		//	}
+		//	fetchBin(bin, lowest);
+		//	break;
+		//}
 
 		/* ----------------------------------------------------------------------
 		The following code does the job, but very inefficiently.
@@ -34,18 +57,22 @@ int main(int argc, char **argv) {
 		
 		/* My Code (Implementation) */
 
-		/* Before we start, let's find out the greatest difference */
-		int greatest = greatestdiff(bin);
 
 		/* If the bin we need IS NOT ACTUALLY IN ONE OF THE SLOTS */
 	if (inThere(bin) != 1) {
+
+		/* Before we start, let's find out the greatest difference */
+		int greatest = greatestdiff(bin);
 
 		/* ==== For every slot ==== */
 		for (int i = 0; i < NUMSLOTS; i++) {
 
 			/* ==== If slot i is empty, definitely use it ==== */
 			if (binInSlot(i) == -1) {
-				fetchBin(bin, i);
+				if (emptySlot() != -1) {
+				int x = emptySlot();
+				fetchBin(bin, x);
+				}
 				break;
 			} else /* If binInSlot(i) != -1 */ {
 				/* if the slot isn't empty check if it already has the needed bin */
@@ -203,4 +230,14 @@ int inThere(int bin) {
 
 	return result;
 
+}
+
+int emptySlot() {
+	int ret = -1;
+	for (int i = 0; i < NUMSLOTS; i++) {
+		if (binInSlot(i) == -1) {
+			ret = i;
+		}
+	}
+	return ret;
 }
