@@ -1,0 +1,56 @@
+CS-220 Spring 2018 Homework 5			Due: Mar. 18, 2018
+
+1. Given the C expression: float x=-19.625; 
+
+	A. What is the value for the sign bit of x?
+	   >The value for the sign bit of x is 1, because x is negative
+	
+	B. What is the binary representation of 19.625, using a binary point
+	   instead of a decimal point?
+	   >The binary representation of 19.625 using binary point is:
+		10011.101
+	   
+	C. What is the representation of 19.625 in normalized binary scientific
+	   notation?
+	   >The representation of 19.625 in normalized binary scientific notation
+		is:
+		(-1 ^ 0) * 001 1101 0000 0000 0000 0000 * (2 ^ 131)
+	
+	D. What is the unbiased value of the exponent in the C representation?
+	   >The unbiased value of the exponent in the C representation is:
+		4
+	
+	E. What is the biased value of the exponent in the C representation of
+	   19.625?
+	   >The biased value of the exponent in the C representation of 19.625
+		is:
+		4 + 127 = 131
+	   
+	F. What are the concrete fraction bits in the binary representation of x?
+	   >The concrete fraction bits in the binary representation of x are:
+		0011 1010 0000... (The '...' represents all continuing zeros until the
+		FRAC field is filled. Also, the '1.' is not included because it is 
+		implied.)
+	
+	G. What is the hexadecimal concrete representation of x?
+	   >The hexadcimal concrete representation of x is:
+		419d0000
+	
+2. Given the following code:
+
+	union flint { 
+		float xf;
+		unsigned int xi;
+	} fl;
+	fl.xi=0x42c8000;
+	printf("xf=%.3f\n",fl.xf);
+	
+	What will get printed to standard output?
+	>I would have expected the float value of 345.000 to be printed to
+	 standard output, but when I ran the code, it printed the float value
+	 0.000. My original response was based off of re-working the IEEE standard
+	 backwards, but it is possible that the program prints 0.000 becasue the binary
+	 number specified in the code rounds very close to 0.
+
+Turn in your edited HW5.txt file in myCourses under Homework Submissions, HW5.
+
