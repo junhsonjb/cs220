@@ -47,12 +47,11 @@ floatx doubleToFloatx(double in, int totalBits, int exponentBits) {
 	//long sbit;
 	//long ebits;
 	//long fbits;
-	unsigned int val = 0;
+	unsigned long val = 0;
 
 	//copy the bits of in into the result variable
 	memcpy(&val, &in, sizeof(in));
 	//printf("result - %X\n", result);
-
 
 	//the value for us to return
 	//floatx ret;
@@ -141,7 +140,12 @@ floatx doubleToFloatx(double in, int totalBits, int exponentBits) {
 	//let's just do some testing
 	//printf("%x\n", val);
 
-	ret = val;
+	/* What we need to do here:
+	 * We have the S, EXP, and FRAC components, we just need to do some
+	 * bit twiddling to get them into the floatx ret in the format:
+	 * ...000SEEEEFFFFFFFF (adjusted to match the specified number of
+	 * E - ~EXP~ and F - ~FRAC~ bits) */
+	ret = val; //fix this value (explained directly above)
 	return ret;
 
 }
