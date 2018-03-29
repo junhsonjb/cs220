@@ -146,6 +146,9 @@ floatx doubleToFloatx(double in, int totalBits, int exponentBits) {
 	 * ...000SEEEEFFFFFFFF (adjusted to match the specified number of
 	 * E - ~EXP~ and F - ~FRAC~ bits) */
 	ret = val; //fix this value (explained directly above)
+
+	//printf("%i %i %i", sbit, ebits, fbits);
+
 	return ret;
 
 }
