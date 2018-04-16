@@ -1,0 +1,96 @@
+
+x86:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+00000000000006b0 <main>:
+ 6b0:	55                   	push   %rbp
+ 6b1:	48 89 e5             	mov    %rsp,%rbp
+ 6b4:	48 83 ec 10          	sub    $0x10,%rsp
+ 6b8:	bf 05 00 00 00       	mov    $0x5,%edi
+ 6bd:	e8 7e 00 00 00       	callq  740 <func2>
+ 6c2:	89 45 fc             	mov    %eax,-0x4(%rbp)
+ 6c5:	bf 01 00 00 00       	mov    $0x1,%edi
+ 6ca:	e8 9f 00 00 00       	callq  76e <func3>
+ 6cf:	89 45 f8             	mov    %eax,-0x8(%rbp)
+ 6d2:	8b 55 f8             	mov    -0x8(%rbp),%edx
+ 6d5:	8b 45 fc             	mov    -0x4(%rbp),%eax
+ 6d8:	89 d6                	mov    %edx,%esi
+ 6da:	89 c7                	mov    %eax,%edi
+ 6dc:	e8 20 00 00 00       	callq  701 <func1>
+ 6e1:	89 45 f4             	mov    %eax,-0xc(%rbp)
+ 6e4:	8b 45 f4             	mov    -0xc(%rbp),%eax
+ 6e7:	89 c6                	mov    %eax,%esi
+ 6e9:	48 8d 3d 64 01 00 00 	lea    0x164(%rip),%rdi        # 854 <_IO_stdin_used+0x4>
+ 6f0:	b8 00 00 00 00       	mov    $0x0,%eax
+ 6f5:	e8 66 fe ff ff       	callq  560 <printf@plt>
+ 6fa:	b8 00 00 00 00       	mov    $0x0,%eax
+ 6ff:	c9                   	leaveq 
+ 700:	c3                   	retq   
+
+0000000000000701 <func1>:
+ 701:	55                   	push   %rbp
+ 702:	48 89 e5             	mov    %rsp,%rbp
+ 705:	89 7d ec             	mov    %edi,-0x14(%rbp)
+ 708:	89 75 e8             	mov    %esi,-0x18(%rbp)
+ 70b:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+ 712:	8b 45 ec             	mov    -0x14(%rbp),%eax
+ 715:	3b 45 e8             	cmp    -0x18(%rbp),%eax #first non matching line
+ 718:	7e 09                	jle    723 <func1+0x22>
+ 71a:	c7 45 fc 01 00 00 00 	movl   $0x1,-0x4(%rbp)
+ 721:	eb 18                	jmp    73b <func1+0x3a>
+ 723:	8b 45 e8             	mov    -0x18(%rbp),%eax
+ 726:	3b 45 ec             	cmp    -0x14(%rbp),%eax
+ 729:	7e 09                	jle    734 <func1+0x33>
+ 72b:	c7 45 fc ff ff ff ff 	movl   $0xffffffff,-0x4(%rbp)
+ 732:	eb 07                	jmp    73b <func1+0x3a>
+ 734:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+ 73b:	8b 45 fc             	mov    -0x4(%rbp),%eax  #this line matches again
+ 73e:	5d                   	pop    %rbp
+ 73f:	c3                   	retq   
+
+0000000000000740 <func2>:
+ 740:	55                   	push   %rbp
+ 741:	48 89 e5             	mov    %rsp,%rbp
+ 744:	89 7d ec             	mov    %edi,-0x14(%rbp)
+ 747:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+ 74e:	c7 45 f8 03 00 00 00 	movl   $0x3,-0x8(%rbp) #last matching line
+ 755:	eb 0a                	jmp    761 <func2+0x21>
+ 757:	8b 45 ec             	mov    -0x14(%rbp),%eax
+ 75a:	01 45 f8             	add    %eax,-0x8(%rbp)
+ 75d:	83 45 fc 01          	addl   $0x1,-0x4(%rbp)
+ 761:	8b 45 fc             	mov    -0x4(%rbp),%eax
+ 764:	3b 45 ec             	cmp    -0x14(%rbp),%eax
+ 767:	7c ee                	jl     757 <func2+0x17>
+ 769:	8b 45 f8             	mov    -0x8(%rbp),%eax #matching once again
+ 76c:	5d                   	pop    %rbp
+ 76d:	c3                   	retq   
+
+000000000000076e <func3>:
+ 76e:	55                   	push   %rbp
+ 76f:	48 89 e5             	mov    %rsp,%rbp
+ 772:	89 7d ec             	mov    %edi,-0x14(%rbp) #enum flavors t
+ 775:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp) #int like
+ 77c:	8b 45 ec             	mov    -0x14(%rbp),%eax
+ 77f:	83 f8 01             	cmp    $0x1,%eax		#first diff line
+ 782:	74 1a                	je     79e <func3+0x30>
+ 784:	83 f8 01             	cmp    $0x1,%eax
+ 787:	72 0c                	jb     795 <func3+0x27>
+ 789:	83 f8 02             	cmp    $0x2,%eax
+ 78c:	74 19                	je     7a7 <func3+0x39>
+ 78e:	83 f8 04             	cmp    $0x4,%eax
+ 791:	74 1d                	je     7b0 <func3+0x42>
+ 793:	eb 24                	jmp    7b9 <func3+0x4b>
+ 795:	c7 45 fc 0a 00 00 00 	movl   $0xa,-0x4(%rbp)
+ 79c:	eb 22                	jmp    7c0 <func3+0x52>
+ 79e:	c7 45 fc 07 00 00 00 	movl   $0x7,-0x4(%rbp)
+ 7a5:	eb 19                	jmp    7c0 <func3+0x52>
+ 7a7:	c7 45 fc fa ff ff ff 	movl   $0xfffffffa,-0x4(%rbp)
+ 7ae:	eb 10                	jmp    7c0 <func3+0x52>
+ 7b0:	c7 45 fc 06 00 00 00 	movl   $0x6,-0x4(%rbp)
+ 7b7:	eb 07                	jmp    7c0 <func3+0x52>
+ 7b9:	c7 45 fc fe ff ff ff 	movl   $0xfffffffe,-0x4(%rbp)
+ 7c0:	8b 45 fc             	mov    -0x4(%rbp),%eax
+ 7c3:	5d                   	pop    %rbp				#matching restarts here
+ 7c4:	c3                   	retq   
