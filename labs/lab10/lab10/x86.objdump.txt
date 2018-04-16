@@ -1,0 +1,380 @@
+
+x86:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+0000000000000530 <_init>:
+_init():
+ 530:	48 83 ec 08          	sub    $0x8,%rsp
+ 534:	48 8b 05 a5 0a 20 00 	mov    0x200aa5(%rip),%rax        # 200fe0 <__gmon_start__>
+ 53b:	48 85 c0             	test   %rax,%rax
+ 53e:	74 02                	je     542 <_init+0x12>
+ 540:	ff d0                	callq  *%rax
+ 542:	48 83 c4 08          	add    $0x8,%rsp
+ 546:	c3                   	retq   
+
+Disassembly of section .plt:
+
+0000000000000550 <.plt>:
+ 550:	ff 35 b2 0a 20 00    	pushq  0x200ab2(%rip)        # 201008 <_GLOBAL_OFFSET_TABLE_+0x8>
+ 556:	ff 25 b4 0a 20 00    	jmpq   *0x200ab4(%rip)        # 201010 <_GLOBAL_OFFSET_TABLE_+0x10>
+ 55c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000000560 <printf@plt>:
+ 560:	ff 25 b2 0a 20 00    	jmpq   *0x200ab2(%rip)        # 201018 <printf@GLIBC_2.2.5>
+ 566:	68 00 00 00 00       	pushq  $0x0
+ 56b:	e9 e0 ff ff ff       	jmpq   550 <.plt>
+
+Disassembly of section .plt.got:
+
+0000000000000570 <.plt.got>:
+ 570:	ff 25 82 0a 20 00    	jmpq   *0x200a82(%rip)        # 200ff8 <__cxa_finalize@GLIBC_2.2.5>
+ 576:	66 90                	xchg   %ax,%ax
+
+Disassembly of section .text:
+
+0000000000000580 <_start>:
+_start():
+ 580:	31 ed                	xor    %ebp,%ebp
+ 582:	49 89 d1             	mov    %rdx,%r9
+ 585:	5e                   	pop    %rsi
+ 586:	48 89 e2             	mov    %rsp,%rdx
+ 589:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+ 58d:	50                   	push   %rax
+ 58e:	54                   	push   %rsp
+ 58f:	4c 8d 05 aa 02 00 00 	lea    0x2aa(%rip),%r8        # 840 <__libc_csu_fini>
+ 596:	48 8d 0d 33 02 00 00 	lea    0x233(%rip),%rcx        # 7d0 <__libc_csu_init>
+ 59d:	48 8d 3d 0c 01 00 00 	lea    0x10c(%rip),%rdi        # 6b0 <main>
+ 5a4:	ff 15 2e 0a 20 00    	callq  *0x200a2e(%rip)        # 200fd8 <__libc_start_main@GLIBC_2.2.5>
+ 5aa:	f4                   	hlt    
+ 5ab:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+
+00000000000005b0 <deregister_tm_clones>:
+deregister_tm_clones():
+ 5b0:	48 8d 3d 79 0a 20 00 	lea    0x200a79(%rip),%rdi        # 201030 <__TMC_END__>
+ 5b7:	48 8d 05 79 0a 20 00 	lea    0x200a79(%rip),%rax        # 201037 <__TMC_END__+0x7>
+ 5be:	55                   	push   %rbp
+ 5bf:	48 29 f8             	sub    %rdi,%rax
+ 5c2:	48 89 e5             	mov    %rsp,%rbp
+ 5c5:	48 83 f8 0e          	cmp    $0xe,%rax
+ 5c9:	76 15                	jbe    5e0 <deregister_tm_clones+0x30>
+ 5cb:	48 8b 05 fe 09 20 00 	mov    0x2009fe(%rip),%rax        # 200fd0 <_ITM_deregisterTMCloneTable>
+ 5d2:	48 85 c0             	test   %rax,%rax
+ 5d5:	74 09                	je     5e0 <deregister_tm_clones+0x30>
+ 5d7:	5d                   	pop    %rbp
+ 5d8:	ff e0                	jmpq   *%rax
+ 5da:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+ 5e0:	5d                   	pop    %rbp
+ 5e1:	c3                   	retq   
+ 5e2:	0f 1f 40 00          	nopl   0x0(%rax)
+ 5e6:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ 5ed:	00 00 00 
+
+00000000000005f0 <register_tm_clones>:
+register_tm_clones():
+ 5f0:	48 8d 3d 39 0a 20 00 	lea    0x200a39(%rip),%rdi        # 201030 <__TMC_END__>
+ 5f7:	48 8d 35 32 0a 20 00 	lea    0x200a32(%rip),%rsi        # 201030 <__TMC_END__>
+ 5fe:	55                   	push   %rbp
+ 5ff:	48 29 fe             	sub    %rdi,%rsi
+ 602:	48 89 e5             	mov    %rsp,%rbp
+ 605:	48 c1 fe 03          	sar    $0x3,%rsi
+ 609:	48 89 f0             	mov    %rsi,%rax
+ 60c:	48 c1 e8 3f          	shr    $0x3f,%rax
+ 610:	48 01 c6             	add    %rax,%rsi
+ 613:	48 d1 fe             	sar    %rsi
+ 616:	74 18                	je     630 <register_tm_clones+0x40>
+ 618:	48 8b 05 d1 09 20 00 	mov    0x2009d1(%rip),%rax        # 200ff0 <_ITM_registerTMCloneTable>
+ 61f:	48 85 c0             	test   %rax,%rax
+ 622:	74 0c                	je     630 <register_tm_clones+0x40>
+ 624:	5d                   	pop    %rbp
+ 625:	ff e0                	jmpq   *%rax
+ 627:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+ 62e:	00 00 
+ 630:	5d                   	pop    %rbp
+ 631:	c3                   	retq   
+ 632:	0f 1f 40 00          	nopl   0x0(%rax)
+ 636:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ 63d:	00 00 00 
+
+0000000000000640 <__do_global_dtors_aux>:
+__do_global_dtors_aux():
+ 640:	80 3d e9 09 20 00 00 	cmpb   $0x0,0x2009e9(%rip)        # 201030 <__TMC_END__>
+ 647:	75 27                	jne    670 <__do_global_dtors_aux+0x30>
+ 649:	48 83 3d a7 09 20 00 	cmpq   $0x0,0x2009a7(%rip)        # 200ff8 <__cxa_finalize@GLIBC_2.2.5>
+ 650:	00 
+ 651:	55                   	push   %rbp
+ 652:	48 89 e5             	mov    %rsp,%rbp
+ 655:	74 0c                	je     663 <__do_global_dtors_aux+0x23>
+ 657:	48 8b 3d ca 09 20 00 	mov    0x2009ca(%rip),%rdi        # 201028 <__dso_handle>
+ 65e:	e8 0d ff ff ff       	callq  570 <.plt.got>
+ 663:	e8 48 ff ff ff       	callq  5b0 <deregister_tm_clones>
+ 668:	5d                   	pop    %rbp
+ 669:	c6 05 c0 09 20 00 01 	movb   $0x1,0x2009c0(%rip)        # 201030 <__TMC_END__>
+ 670:	f3 c3                	repz retq 
+ 672:	0f 1f 40 00          	nopl   0x0(%rax)
+ 676:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ 67d:	00 00 00 
+
+0000000000000680 <frame_dummy>:
+frame_dummy():
+ 680:	48 8d 3d 61 07 20 00 	lea    0x200761(%rip),%rdi        # 200de8 <__JCR_END__>
+ 687:	48 83 3f 00          	cmpq   $0x0,(%rdi)
+ 68b:	75 0b                	jne    698 <frame_dummy+0x18>
+ 68d:	e9 5e ff ff ff       	jmpq   5f0 <register_tm_clones>
+ 692:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+ 698:	48 8b 05 49 09 20 00 	mov    0x200949(%rip),%rax        # 200fe8 <_Jv_RegisterClasses>
+ 69f:	48 85 c0             	test   %rax,%rax
+ 6a2:	74 e9                	je     68d <frame_dummy+0xd>
+ 6a4:	55                   	push   %rbp
+ 6a5:	48 89 e5             	mov    %rsp,%rbp
+ 6a8:	ff d0                	callq  *%rax
+ 6aa:	5d                   	pop    %rbp
+ 6ab:	e9 40 ff ff ff       	jmpq   5f0 <register_tm_clones>
+
+00000000000006b0 <main>:
+main():
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:16
+	tuttifrutti
+};
+
+int func3(enum flavors t);
+
+int main() {
+ 6b0:	55                   	push   %rbp
+ 6b1:	48 89 e5             	mov    %rsp,%rbp
+ 6b4:	48 83 ec 10          	sub    $0x10,%rsp
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:17
+	int a1=func2(5);
+ 6b8:	bf 05 00 00 00       	mov    $0x5,%edi
+ 6bd:	e8 7e 00 00 00       	callq  740 <func2>
+ 6c2:	89 45 fc             	mov    %eax,-0x4(%rbp)
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:18
+	int b1=func3(chocolate);
+ 6c5:	bf 01 00 00 00       	mov    $0x1,%edi
+ 6ca:	e8 9f 00 00 00       	callq  76e <func3>
+ 6cf:	89 45 f8             	mov    %eax,-0x8(%rbp)
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:19
+	int result=func1(a1,b1);
+ 6d2:	8b 55 f8             	mov    -0x8(%rbp),%edx
+ 6d5:	8b 45 fc             	mov    -0x4(%rbp),%eax
+ 6d8:	89 d6                	mov    %edx,%esi
+ 6da:	89 c7                	mov    %eax,%edi
+ 6dc:	e8 20 00 00 00       	callq  701 <func1>
+ 6e1:	89 45 f4             	mov    %eax,-0xc(%rbp)
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:20
+	printf("Result=%d\n",result);
+ 6e4:	8b 45 f4             	mov    -0xc(%rbp),%eax
+ 6e7:	89 c6                	mov    %eax,%esi
+ 6e9:	48 8d 3d 64 01 00 00 	lea    0x164(%rip),%rdi        # 854 <_IO_stdin_used+0x4>
+ 6f0:	b8 00 00 00 00       	mov    $0x0,%eax
+ 6f5:	e8 66 fe ff ff       	callq  560 <printf@plt>
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:21
+	return 0;
+ 6fa:	b8 00 00 00 00       	mov    $0x0,%eax
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:22
+}
+ 6ff:	c9                   	leaveq 
+ 700:	c3                   	retq   
+
+0000000000000701 <func1>:
+func1():
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:24
+
+int func1(int a, int b) {
+ 701:	55                   	push   %rbp
+ 702:	48 89 e5             	mov    %rsp,%rbp
+ 705:	89 7d ec             	mov    %edi,-0x14(%rbp)
+ 708:	89 75 e8             	mov    %esi,-0x18(%rbp)
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:25
+	int c=0;
+ 70b:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:28
+   /* Insert code here */
+
+	if (a > b) {
+ 712:	8b 45 ec             	mov    -0x14(%rbp),%eax
+ 715:	3b 45 e8             	cmp    -0x18(%rbp),%eax
+ 718:	7e 09                	jle    723 <func1+0x22>
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:29
+		c = 1;
+ 71a:	c7 45 fc 01 00 00 00 	movl   $0x1,-0x4(%rbp)
+ 721:	eb 18                	jmp    73b <func1+0x3a>
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:32
+	} else {
+
+		if (b < a) {
+ 723:	8b 45 e8             	mov    -0x18(%rbp),%eax
+ 726:	3b 45 ec             	cmp    -0x14(%rbp),%eax
+ 729:	7d 09                	jge    734 <func1+0x33>
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:33
+			c = -1;
+ 72b:	c7 45 fc ff ff ff ff 	movl   $0xffffffff,-0x4(%rbp)
+ 732:	eb 07                	jmp    73b <func1+0x3a>
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:37
+		} 
+	
+		else {
+			c = 0;
+ 734:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:41
+		}
+	}
+
+	return c;
+ 73b:	8b 45 fc             	mov    -0x4(%rbp),%eax
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:42
+}
+ 73e:	5d                   	pop    %rbp
+ 73f:	c3                   	retq   
+
+0000000000000740 <func2>:
+func2():
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:44
+
+int func2(int a) {
+ 740:	55                   	push   %rbp
+ 741:	48 89 e5             	mov    %rsp,%rbp
+ 744:	89 7d ec             	mov    %edi,-0x14(%rbp)
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:45
+	int x=0;
+ 747:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:46
+	int y=3;
+ 74e:	c7 45 f8 03 00 00 00 	movl   $0x3,-0x8(%rbp)
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:49
+	/* Insert code here */
+	
+	while (x < a) {
+ 755:	eb 0a                	jmp    761 <func2+0x21>
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:50
+		y += a;
+ 757:	8b 45 ec             	mov    -0x14(%rbp),%eax
+ 75a:	01 45 f8             	add    %eax,-0x8(%rbp)
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:51
+		x += 1;
+ 75d:	83 45 fc 01          	addl   $0x1,-0x4(%rbp)
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:49
+	while (x < a) {
+ 761:	8b 45 fc             	mov    -0x4(%rbp),%eax
+ 764:	3b 45 ec             	cmp    -0x14(%rbp),%eax
+ 767:	7c ee                	jl     757 <func2+0x17>
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:54
+	}
+	
+	return y;
+ 769:	8b 45 f8             	mov    -0x8(%rbp),%eax
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:55
+}
+ 76c:	5d                   	pop    %rbp
+ 76d:	c3                   	retq   
+
+000000000000076e <func3>:
+func3():
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:57
+
+int func3(enum flavors t) {
+ 76e:	55                   	push   %rbp
+ 76f:	48 89 e5             	mov    %rsp,%rbp
+ 772:	89 7d ec             	mov    %edi,-0x14(%rbp)
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:58
+	int like=0;
+ 775:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:61
+	/* Insert code here */
+	
+	switch (t) {
+ 77c:	8b 45 ec             	mov    -0x14(%rbp),%eax
+ 77f:	83 f8 01             	cmp    $0x1,%eax
+ 782:	74 1a                	je     79e <func3+0x30>
+ 784:	83 f8 01             	cmp    $0x1,%eax
+ 787:	72 0c                	jb     795 <func3+0x27>
+ 789:	83 f8 02             	cmp    $0x2,%eax
+ 78c:	74 19                	je     7a7 <func3+0x39>
+ 78e:	83 f8 04             	cmp    $0x4,%eax
+ 791:	74 1d                	je     7b0 <func3+0x42>
+ 793:	eb 24                	jmp    7b9 <func3+0x4b>
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:62
+		case vanilla: like = 10; break;
+ 795:	c7 45 fc 0a 00 00 00 	movl   $0xa,-0x4(%rbp)
+ 79c:	eb 22                	jmp    7c0 <func3+0x52>
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:63
+		case chocolate: like = 7; break;
+ 79e:	c7 45 fc 07 00 00 00 	movl   $0x7,-0x4(%rbp)
+ 7a5:	eb 19                	jmp    7c0 <func3+0x52>
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:64
+		case strawberry: like = -6; break;
+ 7a7:	c7 45 fc fa ff ff ff 	movl   $0xfffffffa,-0x4(%rbp)
+ 7ae:	eb 10                	jmp    7c0 <func3+0x52>
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:65
+		case tuttifrutti: like = 6; break;
+ 7b0:	c7 45 fc 06 00 00 00 	movl   $0x6,-0x4(%rbp)
+ 7b7:	eb 07                	jmp    7c0 <func3+0x52>
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:66
+		default: like =  -2;
+ 7b9:	c7 45 fc fe ff ff ff 	movl   $0xfffffffe,-0x4(%rbp)
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:69
+	}
+ 
+	return like;
+ 7c0:	8b 45 fc             	mov    -0x4(%rbp),%eax
+/import/linux/home1/jjeanba2/cs220/labs/lab10/lab10/x86.c:70
+}
+ 7c3:	5d                   	pop    %rbp
+ 7c4:	c3                   	retq   
+ 7c5:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ 7cc:	00 00 00 
+ 7cf:	90                   	nop
+
+00000000000007d0 <__libc_csu_init>:
+__libc_csu_init():
+ 7d0:	41 57                	push   %r15
+ 7d2:	41 56                	push   %r14
+ 7d4:	41 89 ff             	mov    %edi,%r15d
+ 7d7:	41 55                	push   %r13
+ 7d9:	41 54                	push   %r12
+ 7db:	4c 8d 25 f6 05 20 00 	lea    0x2005f6(%rip),%r12        # 200dd8 <__frame_dummy_init_array_entry>
+ 7e2:	55                   	push   %rbp
+ 7e3:	48 8d 2d f6 05 20 00 	lea    0x2005f6(%rip),%rbp        # 200de0 <__init_array_end>
+ 7ea:	53                   	push   %rbx
+ 7eb:	49 89 f6             	mov    %rsi,%r14
+ 7ee:	49 89 d5             	mov    %rdx,%r13
+ 7f1:	4c 29 e5             	sub    %r12,%rbp
+ 7f4:	48 83 ec 08          	sub    $0x8,%rsp
+ 7f8:	48 c1 fd 03          	sar    $0x3,%rbp
+ 7fc:	e8 2f fd ff ff       	callq  530 <_init>
+ 801:	48 85 ed             	test   %rbp,%rbp
+ 804:	74 20                	je     826 <__libc_csu_init+0x56>
+ 806:	31 db                	xor    %ebx,%ebx
+ 808:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+ 80f:	00 
+ 810:	4c 89 ea             	mov    %r13,%rdx
+ 813:	4c 89 f6             	mov    %r14,%rsi
+ 816:	44 89 ff             	mov    %r15d,%edi
+ 819:	41 ff 14 dc          	callq  *(%r12,%rbx,8)
+ 81d:	48 83 c3 01          	add    $0x1,%rbx
+ 821:	48 39 dd             	cmp    %rbx,%rbp
+ 824:	75 ea                	jne    810 <__libc_csu_init+0x40>
+ 826:	48 83 c4 08          	add    $0x8,%rsp
+ 82a:	5b                   	pop    %rbx
+ 82b:	5d                   	pop    %rbp
+ 82c:	41 5c                	pop    %r12
+ 82e:	41 5d                	pop    %r13
+ 830:	41 5e                	pop    %r14
+ 832:	41 5f                	pop    %r15
+ 834:	c3                   	retq   
+ 835:	90                   	nop
+ 836:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ 83d:	00 00 00 
+
+0000000000000840 <__libc_csu_fini>:
+__libc_csu_fini():
+ 840:	f3 c3                	repz retq 
+
+Disassembly of section .fini:
+
+0000000000000844 <_fini>:
+_fini():
+ 844:	48 83 ec 08          	sub    $0x8,%rsp
+ 848:	48 83 c4 08          	add    $0x8,%rsp
+ 84c:	c3                   	retq   
