@@ -1,0 +1,33 @@
+
+============= Starting tier 1 =============
+-------------------- Winners Bracket ----------------------
+Playing paper against random ...
+  paper score is 18, random score is 94 ...random Won!!!
+Playing scissors against rock ...
+  scissors score is 0, rock score is 50 ...rock Won!!!
+============= Finished tier 1 =============
+
+============= Starting tier 2 =============
+-------------------- Winners Bracket ----------------------
+Playing rock against random ...
+  rock score is 31, random score is 19 ...rock Won!!!!
+--------------------- Losers Bracket ------------------------------
+Playing scissors against paper ...
+  scissors score is 50, paper score is 0 ...scissors Won!!!!
+Eliminating paper after two losses
+============= Finished tier 2 =============
+
+============= Starting tier 3 =============
+-------------------- Winners Bracket ----------------------
+  Player rock got a bye into the next tier
+--------------------- Losers Bracket ------------------------------
+Playing scissors against random ...
+  scissors score is 31, random score is 26 ...scissors Won!!!!
+Eliminating random after two losses
+============= Finished tier 3 =============
+
+========== Championship Match! ==============
+Playing rock against scissors ...
+  rock score is 50, scissors score is 0 ...rock Won!!!!
+
+Winner and unbeaten champion: rock!!!

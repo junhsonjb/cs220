@@ -1,0 +1,6 @@
+# The following is an example input file for the mix program
+# ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----A...
+# S This is a character string 
+S aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+A 0x00005555555548a2
+# above is 83 'a's

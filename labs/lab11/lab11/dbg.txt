@@ -1,0 +1,7 @@
+break main
+# Linux uses ASLR "Address Space Layout Randomization" to foil things like buffer overflow attacks
+# gdb disables this by default using "disable-randomization on". Under gdb, buffer overflow attacks work
+# In order to run with ASLR turned on, un-comment the following line...
+# set disable-randomization off
+set disassemble-next-line on
+run <mix_out.bin

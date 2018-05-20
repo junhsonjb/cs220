@@ -1,0 +1,4 @@
+set disassemble-next-line on
+b getUserLine
+b main
+run <mix_out.bin
